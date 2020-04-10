@@ -16,13 +16,13 @@ class RomannumeralsApplicationTests {
 	@Test
 	void shouldReturn2014Number(){
 		String roman_2014 = "MMXIV";
-		Assertions.assertEquals(2014, romanNumeralsService.converterToInteger(roman_2014));
+		Assertions.assertEquals(2014, romanNumeralsService.converterToInteger(roman_2014).getNumber());
 	}
 
 	@Test
 	void shouldReturn2014Roman(){
 		Integer number_2014 = 2014;
-		Assertions.assertEquals("MMXIV", romanNumeralsService.converterToRoman(number_2014));
+		Assertions.assertEquals("MMXIV", romanNumeralsService.converterToRoman(number_2014).getRoman());
 	}
 
 }

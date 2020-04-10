@@ -1,5 +1,7 @@
 package com.kleber.zenvia.romannumerals.service;
 
+import com.kleber.zenvia.romannumerals.converter.RomanNumberalConverter;
+import com.kleber.zenvia.romannumerals.dto.PairRomanNumeral;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,35 +10,35 @@ public class RomanNumeralsService {
     private final Integer[] NUMBERS = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     private final String[] ROMAN_NUMBERS = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
-    public String converterToRoman(Integer number) {
+    public PairRomanNumeral converterToRoman(Integer number) {
+        Integer numberInput = number;
         int i = 0;
         StringBuilder roman = new StringBuilder();
-        while (number > 0 && i < NUMBERS.length) {
+        while (numberInput > 0 && i < NUMBERS.length) {
             String symbol = ROMAN_NUMBERS[i];
-            if (NUMBERS[i] <= number) {
+            if (NUMBERS[i] <= numberInput) {
                 roman.append(symbol);
-                number-=NUMBERS[i];
+                numberInput-=NUMBERS[i];
             } else {
                 i++;
             }
         }
-        return roman.toString();
+        return new RomanNumberalConverter().apply(roman.toString(), number);
     }
 
-    public Integer converterToInteger(String romanNumber) {
-        romanNumber = romanNumber.toUpperCase();
-        Integer result = 0;
-
+    public PairRomanNumeral converterToInteger(String romanNumber) {
+        String romanNumberInput = romanNumber.toUpperCase();
+        Integer number = 0;
         int i = 0;
-        while (romanNumber.length() > 0  && i < ROMAN_NUMBERS.length) {
+        while (romanNumberInput.length() > 0  && i < ROMAN_NUMBERS.length) {
             String symbol = ROMAN_NUMBERS[i];
-            if(romanNumber.startsWith(symbol)) {
-                result+=NUMBERS[i];
-                romanNumber = romanNumber.substring(symbol.length());
+            if(romanNumberInput.startsWith(symbol)) {
+                number+=NUMBERS[i];
+                romanNumberInput = romanNumberInput.substring(symbol.length());
             } else {
                 i++;
             }
         }
-        return result;
+        return new RomanNumberalConverter().apply(romanNumber, number);
     }
 }
