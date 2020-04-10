@@ -16,6 +16,7 @@ Para representar outros números, são escritos alguns algarismos, começando do
 #### Execução
 - `mvn spring-boot:run`
 - `curl http://localhost:8080/api/roman/v1/converter/numeral/MMXIV` resultado esperado: 2014
+- `curl http://localhost:8080/api/roman/v1/converter/roman/2018` resultado esperado: MMXVIII
 
 ##### Contato :bowtie:
 
