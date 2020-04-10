@@ -2,14 +2,22 @@
 
 ### Problem Description
 
+## Introdução 
+Os romanos antigos desenvolveram seu próprio sistema numérico chamado numeração romana. O sistema usa letras com valores diferentes para representar números. São sete letras que compõe esse sistema númerico, I(1), V(5), X(10), L(50), C(100), D(500) e M(1000). 
+Para representar outros números, são escritos alguns algarismos, começando do algarismo de maior valor e seguindo a seguinte regra:
+
+    Algarismos de menor ou igual valor à direita são somados ao algarismo de maior valor;
+    Algarismos de menor valor à esquerda são subtraídos do algarismo de maior valor.
+    
 > **Requisito do sistema**
 
-- Part I: The Kata says you should write a function to convert from normal numbers to Roman Numerals: eg
-   1 --> I
-   10 --> X
-   7 --> VII
+- Parte 1: Escrever uma função que converta um numero romano para inteiro.
+- Parte 2: Escrever uma função que convertar um numero inteiro para romano.
 
-- Part II: Write a function to convert in the other direction, ie numeral to digit
+
+#### Execução
+`mvn spring-boot:run`
+`curl http://localhost:8080/api/roman/v1/converter/numeral/MMXIV` resultado esperado: 2014
 
 ##### Contato :bowtie:
 
